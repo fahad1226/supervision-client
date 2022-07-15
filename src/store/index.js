@@ -32,7 +32,7 @@ export default createStore({
             state.isLoggedIn = true;
             state.role = payload.user.role;
         },
-        UPDATE_ALERT(state, payload) {
+        UPDATE_ALERT(state) {
             state.alert.open = true;
             state.alert.message = "Email or Password is incorrect";
             state.alert.status = "unsuccess";
@@ -60,9 +60,17 @@ export default createStore({
                             });
                         }, 800);
                     } else {
-                        setTimeout(() => {
-                            router.push({ name: "studentSection" });
-                        }, 800);
+                        console.log("pass changed is", response.data.user.pass_changed);
+                        if (response.data.user.pass_changed) {
+                            setTimeout(() => {
+                                
+                                router.push({ name: "profile" });
+                            }, 800);
+                        } else {
+                            setTimeout(() => {
+                                router.push({ name: "studentSection" });
+                            }, 800);
+                        }
                     }
                 }
             } catch (error) {
