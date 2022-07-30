@@ -3,8 +3,8 @@ import store from "../store/index";
 
 export default () =>
     axios.create({
-        baseURL: `http://supervison-backend.test/api`,
-        //baseURL: "https://supervision.damngoodtools.com/api",
+        //baseURL: `http://supervison-backend.test/api`,
+        baseURL: "https://supervision.damngoodtools.com/api",
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",

@@ -52,24 +52,21 @@ export default createStore({
                 commit("UPDATE_LOGIN", response.data);
                 if (response.status === 201) {
                     const user = response.data?.user;
-                    if (user.role === 1) {
-                        setTimeout(() => {
-                            router.push({
-                                name: "teachersSection",
-                                params: { teacherId: user.id },
-                            });
-                        }, 800);
-                    } else {
-                        console.log("pass changed is", response.data.user.pass_changed);
-                        if (response.data.user.pass_changed) {
-                            setTimeout(() => {
-                                
-                                router.push({ name: "profile" });
-                            }, 800);
+                    console.log("Hello user role", user.role);
+                    if (user.role == 1) {
+                        router.push({
+                            name: "teachersSection",
+                            params: { teacherId: user.id },
+                        });
+                    } else if (user.role == 2) {
+                        console.log(
+                            "pass changed is tt",
+                            response.data.user.pass_changed
+                        );
+                        if (!response.data.user.pass_changed) {
+                            router.push({ name: "profile" });
                         } else {
-                            setTimeout(() => {
-                                router.push({ name: "studentSection" });
-                            }, 800);
+                            router.push({ name: "studentSection" });
                         }
                     }
                 }

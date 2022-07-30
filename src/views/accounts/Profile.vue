@@ -8,12 +8,11 @@
     />
     <!-- <EditProfile /> -->
 
-
     <div class="bg-gray-100">
         <!-- End of Navbar -->
         <div class="container mx-auto my-5 p-5">
             <div
-                v-if="user.pass_changed"
+                v-if="user.pass_changed === 0"
                 id="alert-border-4"
                 class="flex p-4 mb-4 bg-yellow-100 border-t-4 border-yellow-500 dark:bg-yellow-200"
                 role="alert"
@@ -32,7 +31,10 @@
                 </svg>
                 <div class="ml-3 text-sm font-medium text-yellow-700">
                     <span class="font-bold">Change your default Password</span>
-                    <span class="ml-4 font-thin">Your current password is the default one. Change this before something bad happens!</span>
+                    <span class="ml-4 font-thin"
+                        >Your current password is the default one. Change this
+                        before something bad happens!</span
+                    >
                 </div>
                 <button
                     type="button"
